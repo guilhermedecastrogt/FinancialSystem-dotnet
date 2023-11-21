@@ -9,13 +9,7 @@
     <ItemGroup>
       <Folder Include="1 - Presentation\" />
       <Folder Include="2 - Domain\" />
-      <Folder Include="2 - Domain\Domain\Interfaces\ICategory\" />
-      <Folder Include="2 - Domain\Domain\Interfaces\IExpense\" />
-      <Folder Include="2 - Domain\Domain\Interfaces\IFinancialSystem\" />
-      <Folder Include="2 - Domain\Domain\Interfaces\ServicesInterface\" />
       <Folder Include="3 - InfraStructure\" />
-      <Folder Include="3 - InfraStructure\Infra\Configuration\" />
-      <Folder Include="3 - InfraStructure\Infra\Repository\" />
       <Folder Include="4 - Entities\" />
       <Folder Include="5 - Helpers\" />
     </ItemGroup>
@@ -27,6 +21,7 @@
 
     <ItemGroup>
       <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.14" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.14" />
     </ItemGroup>
 
     <ItemGroup>
