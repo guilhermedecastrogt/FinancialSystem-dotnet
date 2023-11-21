@@ -1,10 +1,13 @@
-﻿using Domain.Interfaces.Generics;
+﻿using System.Reflection.Metadata;
+using System.Runtime.InteropServices;
+using Domain.Interfaces.Generics;
 using Entities._3___InfraStructure.Infra.Configuration;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Win32.SafeHandles;
 
 namespace Entities._3___InfraStructure.Infra.Repository.Generics;
 
-public class GenericsRepository<T> : InterfaceGeneric<T> where T : class
+public class GenericsRepository<T> : InterfaceGeneric<T>, IDisposable where T : class
 {
     private readonly DbContextOptions<ContextBase> _OptionsBuilder;
     
@@ -54,5 +57,26 @@ public class GenericsRepository<T> : InterfaceGeneric<T> where T : class
         {
             return await context.Set<T>().AsNoTracking().ToListAsync();
         }
+    }
+    
+    bool disposed = false;
+    private SafeHandle handle = new SafeFileHandle(IntPtr.Zero, true);
+    
+    public void Dispose()
+    {
+        // Dispose of unmanaged resources.
+        Dispose(true);
+        // Suppress finalization.
+        GC.SuppressFinalize(this);
+    }
+    protected virtual void Dispose(bool disposing)
+    {
+        if (disposed)
+            return;
+        if (disposing)
+        {
+            handle.Dispose();
+        }
+        disposed = true;
     }
 }
