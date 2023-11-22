@@ -1,6 +1,11 @@
 using Domain.Interfaces.Generics;
+using Domain.Interfaces.ICategory;
+using Domain.Interfaces.IExpense;
+using Domain.Interfaces.IFinancialSystem;
+using Domain.Interfaces.IFinancialSystemUser;
 using Entities.Entities;
 using Infra.Configuracao;
+using Infra.Repository;
 using Infra.Repository.Generics;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,8 +26,13 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.R
 
 
 
-// INTERFACE E REPOSITORIO
+// INTERFACE AND REPOSITORY
+
 builder.Services.AddSingleton(typeof(InterfaceGeneric<>), typeof(RepositoryGenerics<>));
+builder.Services.AddSingleton<IFinancialSystem, FinancialSystemRepository>();
+builder.Services.AddSingleton<IExpense, ExpenseRepository>();
+builder.Services.AddSingleton<ICategory, CategoryRepository>();
+builder.Services.AddSingleton<IFinancialSystemUser, FinancialSystemUserRepository>();
 
 
 var app = builder.Build();
