@@ -7,7 +7,7 @@ using Entities.Entities;
 
 namespace Domain.Interfaces.IServices
 {
-    public interface IFinancialSystemUser
+    public interface IFinancialSystemUserService
     {
         Task RegisterUserInSystem(FinancialSystemUser userSystem);
     }
