@@ -26,7 +26,7 @@ namespace Entities.Notifications
         public List<Notify> notifications;
 
 
-        public bool ValidarPropriedadeString(string value, string priorityName)
+        public bool PropertyStringValidate(string value, string priorityName)
         {
             if (string.IsNullOrWhiteSpace(value) || string.IsNullOrWhiteSpace(priorityName))
             {
